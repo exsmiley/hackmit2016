@@ -62,7 +62,8 @@ def generate_model(person):
 
 def topics_from_people(person):
     """
-    Gets the LDA model's topics for the person
+    Gets the LDA model's topics for the person specified.
+    @return list of strings of topics to search on google
     """
     lda_model = gensim.models.ldamodel.LdaModel.load("%s_model" % person)
 
@@ -91,8 +92,4 @@ def main():
             print topic
 
 if __name__ == '__main__':
-    # main()
-    generate_model('trump')
-    topics = topics_from_people('trump')
-    for topic in topics:
-        print topic
+    main()
