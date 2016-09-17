@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/exsmiley/hackmit2016#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "firebase": "^3.4.0"
   }
 }
