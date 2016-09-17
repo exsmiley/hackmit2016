@@ -1,0 +1,22 @@
+{
+  "name": "hackmit2016",
+  "version": "1.0.0",
+  "description": "Make XKCD Great Again! ;)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exsmiley/hackmit2016.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/exsmiley/hackmit2016/issues"
+  },
+  "homepage": "https://github.com/exsmiley/hackmit2016#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
