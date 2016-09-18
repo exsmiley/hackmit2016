@@ -3,5 +3,23 @@
 	The most patriotic candidate (most likely to use the word America) is surprisingly Hillary Clinton.
 	<br>
 	The "greatest" candidate (most likely to use the word great) is not surprisingly Donald Trump by a factor of 5x.
+	<br>
+	The most likely to get into college in 2016 is Hilary Clinton by a factor of 1.4 as determined by use of SAT words.
+	<br>
+	Sentiment analysis on the wikipedia articles of each of the candidates were mostly neutral in terms of content at around 80%. However, Clinton's article is 0.4% more positive and 0.5% less negative where Trump's article was about 4.8% negative.
+	<br>
+	Running document distance between Clinton/Trump and many other pages came up with some interesting patterns:
+	<ul>
+		<li>Clinton's page was 10% less similar to political freedom than Trump's.</li>
+		<li>Trump's page was ironically 15% more similar to China, North Korea, and Russia than Clinton's page despite the previous statement.</li>
+	</ul>
+  </p>
+  <p class='text-xs-center'>
+  	<h3> Overall results based on users that have used the app</h3>
+  	<div class="row" style="display:block;height:80%;width:60%;">
+        <canvas id="bar" class="chart chart-bar" options="options"
+          chart-data="voteData" chart-labels="voteLabels" chart-series="voteSeries">
+        </canvas>
+      </div>
   </p>
 </div>

@@ -19,7 +19,8 @@ var app = angular.module('GreatAppAgain',['ngMaterial', 'ngMessages', 'material.
 		})
 
 		.when('/insight', {
-			templateUrl: 'pages/insight.html'
+			templateUrl: 'pages/insight.html',
+			controller: 'GreatCtrl'
 		})
 
 		.otherwise({templateUrl: 'pages/404.html'})

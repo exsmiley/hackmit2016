@@ -111,4 +111,6 @@ app.controller('GreatCtrl', function($scope, $http) {
 		    $scope.voteData = [[response['data']['trump'], response['data']['hillary']], [0,0]]
 		});
   	}
+
+  	$scope.getResults()
 })
