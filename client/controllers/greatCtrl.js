@@ -3,6 +3,7 @@ app.controller('GreatCtrl', function($scope, $http) {
   	$scope.imagePath = 'img/washedout.png';
   	$scope.trumpVotes = 0
   	$scope.hillaryVotes = 0
+  	$scope.finished = false
 
   	// Get lists of images
   	$http({
@@ -21,20 +22,32 @@ app.controller('GreatCtrl', function($scope, $http) {
 
 	// set the display image
 	$scope.nextImage = function() {
+		if($scope.trumpImages.length === 0 && $scope.hillaryImages.length === 0) {
+			// no more images to cycle through
+			$scope.finish()
+			return
+		}
 		var cand = Math.floor(Math.random()*2)
 		if(cand === 0) {
 			$scope.cand = 'trump'
-			var index = Math.floor(Math.random()*$scope.trumpImages.length+1)
+			if($scope.trumpImages.length === 0) {
+				$scope.nextImage()
+				return
+			}
+			var index = Math.floor(Math.random()*$scope.trumpImages.length)
 			$scope.currentImage = $scope.trumpImages[index]
 			$scope.trumpImages.splice(index, 1)
 		}
 		else {
 			$scope.cand = 'hillary'
-			var index = Math.floor(Math.random()*$scope.hillaryImages.length+1)
+			if($scope.hillaryImages.length === 0) {
+				$scope.nextImage()
+				return
+			}
+			var index = Math.floor(Math.random()*$scope.hillaryImages.length)
 			$scope.currentImage = $scope.hillaryImages[index]
 			$scope.hillaryImages.splice(index, 1)
 		}
-		$scope.$apply()
 	}
 
   	// vote for the current candidate
@@ -46,5 +59,10 @@ app.controller('GreatCtrl', function($scope, $http) {
   			$scope.hillaryVotes++
   		}
   		$scope.nextImage()
+  	}
+
+  	// transitions to the final screen
+  	$scope.finish = function() {
+  		// TODO
   	}
 })
