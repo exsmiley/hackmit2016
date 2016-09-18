@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var fs = require('fs');
 
 var app = express();
 var server = http.createServer(app);
@@ -24,6 +25,21 @@ var rootRef = firebase.database().ref();
 var counter = rootRef.child('counter');
 
 app.use(express.static('client'));
+
+app.get('/api/images/:candidate', function(req, res) {
+	// get all files
+	var path = 'client/img/' + req.params.candidate
+	console.log(path)
+
+	fs.readdir(path, function(err, items) {
+		console.log(items)
+	    res.send(items)
+	});
+})
+
+app.post('/api/vote', function(req, res) {
+	// use req.body.vote to get the person that is getting voted for
+});
 
 app.all('/*', function ( req, res ) {
         res.sendFile(__dirname + '/client/index.html');
