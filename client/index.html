@@ -76,8 +76,10 @@
 
         </md-card>
     </md-content>
+
   </div>
 
+  <!-- TINDER CARD PART -->
   <div ng-if='pageIndex === 2'>
     <md-content layout-xs="column" layout="row"  layout-align="center" ng-if='pageIndex === 2'>
         <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
@@ -109,8 +111,30 @@
     </md-content>
   </div>
 
+  <!-- FINISHED GAME WINNER DISPLAY SCREEN -->
   <div ng-if='pageIndex === 3'>
+    <md-content layout-xs="column" layout="row"  layout-align="center">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+          <md-card-title>
+            <span layout ="row">
+              <md-card-title-text>
+                <span class="md-headline">Congrats!</span>
+                <!-- Bindings here for whichever is the winner -->
+                <span class="md-subhead"><b>Your presidential candidate is {{}}</b></span>
+                <!-- This image should also be bound to either display Trump or Hillary -->
+                <img src="img/trump_doge.gif" alt="Doge Trump">
+            <md-card-actions layout-xs="column" layout="row" layout-align="center center">
+                <md-content layout-xs="column" layout="row"  layout-align="center">
+                <!-- This button should take us to the 'About' page -->
+                  <md-button class="md-raised md-warn" ng-click='start()'>Learn more</md-button>
+                </md-content>
+            </md-card-actions>
+              </md-card-title-text>
+            </span>
+          </md-card-title>
 
+        </md-card>
+    </md-content>
   </div>
 
   <div ng-if='pageIndex === 4'>
