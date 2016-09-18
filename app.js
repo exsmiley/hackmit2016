@@ -32,7 +32,6 @@ app.get('/api/images/:candidate', function(req, res) {
 	console.log(path)
 
 	fs.readdir(path, function(err, items) {
-		console.log(items)
 	    res.send(items)
 	});
 })

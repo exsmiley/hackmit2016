@@ -45,7 +45,7 @@
     </div>
    </nav>
 
-    <div ng-controller="AppCtrl" ng-cloak="" class="carddemoBasicUsage" ng-app="MyApp">
+    <div ng-controller="GreatCtrl" ng-cloak="" class="carddemoBasicUsage" ng-app="GreatAppAgain">
   <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center">
 
       <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
@@ -57,15 +57,15 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content layout="row" >
-          <img src="img/trump/career.png" alt="voter image" layout-align="left">
+          <img src="img/{{cand}}/{{currentImage}}" alt="voter image" layout-align="left">
           <md-card-actions layout="column" layout-align="center center">
             <!--<md-button class="md-icon-button" aria-label="Favorite">
               <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
             </md-button> -->
-            <md-button class="md-icon-button" aria-label="Thumbs Up">
+            <md-button class="md-icon-button" aria-label="Thumbs Up" ng-click="vote()">
               <md-icon md-font-library="material-icons">&#xE8DC;</md-icon>
             </md-button>
-            <md-button class="md-icon-button" aria-label="Thumbs Down">
+            <md-button class="md-icon-button" aria-label="Thumbs Down" ng-click="next()">
              <md-icon md-font-library="material-icons">&#xE8DB;</md-icon>
             </md-button>
           </md-card-actions>
@@ -76,7 +76,7 @@
 </div>
 
 <!--
-Copyright 2016 Google Inc. All Rights Reserved. 
+Copyright 2016 Make Google Inc. Great Again All Rights Reserved. 
 Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
 -->
 <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
@@ -87,7 +87,9 @@ Use of this source code is governed by an MIT-style license that can be foundin 
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
 <script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.js'></script>
 
-        <script src="js/index.js"></script>
+        <!-- Our Angular scripts -->
+        <script src="app.js"></script>
+        <script src="controllers/greatCtrl.js"></script>
 
     
     
