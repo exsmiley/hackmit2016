@@ -14,6 +14,10 @@ Essentially, we boiled it down to the very basics. Our users visit our site to f
 ##How we built it
 We curated the speeches of Trump and Clinton from their election campaigns, as well as nearly all of Trump's tweets from the last year. From this text corpus, we ran the latent Dirichlet allocation (LDA) algorithm in order to get a collection of 'topics' (Trump topics and Clinton topics) – these topics were then mapped to the most closely corresponding xkcd comics. From there, we built a front-end interface where users could indicate their interest in each xkcd comic, which we tracked the results of to display a diagnosis at the end, regarding whether they displayed more interest in Clinton topics vs Trump topics. Each of the comics that the user likes counts as a vote for the candidate whose topic was associated with that comic. The candidate with the most likes is the selected candidate for the user. 
 
+
+##Bonus Insight
+We also ran several machine learning algorithms to look at word frequencies inside of the speeches to see patterns. We looked at the Wikipedia pages for them as well and looked at sentiment analysis of the pages and document distance to other pages. 
+
 ###About Us:
 
 Zachery Miranda: Junior at MIT. 
