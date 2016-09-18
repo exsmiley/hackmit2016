@@ -37,6 +37,9 @@ def get_word_counts(passages, stop_words=get_stop_words()):
 
 
 def get_most_patriotic():
+	"""
+	Checks which candidate uses the word America more often.
+	"""
 	candidates = ['hillary', 'trump']
 	stop_words = get_stop_words()
 	stop_words.remove('america')
@@ -52,6 +55,31 @@ def get_most_patriotic():
 	print counters
 
 	return max(counters.iteritems(), key=operator.itemgetter(1))[0]
+
+def get_most_eloquent():
+	"""
+	Checks which candidate used SAT words more frequently.
+	"""
+	candidates = ['hillary', 'trump']
+
+	with open('sat.txt') as f:
+		sat_words = f.read().split()
+
+	counters = {}
+
+	for cand in candidates:
+		counter, total_words = get_word_counts(get_passages_for_candidate(cand))
+
+		for word in sat_words:
+			eloquence_sum = 1.0*counter[word]/total_words
+			try:
+				counters[cand] += eloquence_sum
+			except:
+				counters[cand] = eloquence_sum
+	print counters
+
+	return max(counters.iteritems(), key=operator.itemgetter(1))[0]
+
 
 def get_wikipedia_data():
 	"""
