@@ -46,8 +46,10 @@
    </nav>
 
     <div ng-controller="GreatCtrl" ng-cloak="" class="carddemoBasicUsage" ng-app="GreatAppAgain">
+      Trump Likes: {{trumpVotes}} Hillary Likes: {{hillaryVotes}}<br>
+      {{trumpImages}}<br>
+      {{hillaryImages}}
   <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center">
-
       <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
         <md-card-title>
           <md-card-title-text>
@@ -65,7 +67,7 @@
             <md-button class="md-icon-button" aria-label="Thumbs Up" ng-click="vote()">
               <md-icon md-font-library="material-icons">&#xE8DC;</md-icon>
             </md-button>
-            <md-button class="md-icon-button" aria-label="Thumbs Down" ng-click="next()">
+            <md-button class="md-icon-button" aria-label="Thumbs Down" ng-click="nextImage()">
              <md-icon md-font-library="material-icons">&#xE8DB;</md-icon>
             </md-button>
           </md-card-actions>

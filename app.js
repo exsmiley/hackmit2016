@@ -27,9 +27,8 @@ var counter = rootRef.child('counter');
 app.use(express.static('client'));
 
 app.get('/api/images/:candidate', function(req, res) {
-	// get all files
+	// get all files for the current candidate
 	var path = 'client/img/' + req.params.candidate
-	console.log(path)
 
 	fs.readdir(path, function(err, items) {
 	    res.send(items)
