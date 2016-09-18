@@ -75,7 +75,6 @@
 
         </md-card>
     </md-content>
-
   </div>
 
   <!-- TINDER CARD PART -->
@@ -136,8 +135,30 @@
     </md-content>
   </div>
 
+  <!-- INCONCLUSIVE, AKA THERE IS A TIE -->
   <div ng-if='pageIndex === 4'>
-
+    <md-content layout-xs="column" layout="row"  layout-align="center">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+          <md-card-title>
+            <span layout ="row">
+              <md-card-title-text>
+                <span class="md-headline">Uh oh!</span>
+                <span class="md-subhead"><b>Your results are inconclusive.</b> <br>
+                  Select one more card to fix this!</span>
+                <img src="img/pusheen.gif" alt="Sad Pepe">
+            <md-card-actions layout-xs="column" layout="row" layout-align="center center">
+                <md-content layout-xs="column" layout="row"  layout-align="center">
+                <!-- This button should give us one more card to choose -->
+                  <md-button class="md-raised md-primary"ng-click='start()'>One more!</md-button>
+                <!-- ... Not really sure. I guess go straight to 'About' -->
+                  <md-button class="md-warn md-raised md-hue-2">Quit</md-button>
+                </md-content>
+            </md-card-actions>
+              </md-card-title-text>
+            </span>
+          </md-card-title>
+        </md-card>
+    </md-content>
   </div>
 </div>
 
