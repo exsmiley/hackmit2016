@@ -36,18 +36,19 @@ def word_counts(passages, stop_words=get_stop_words()):
 
 
 def get_most_patriotic():
-	candidates = ['hillary', 'trump', 'obama']
+	candidates = ['hillary', 'trump']
 	stop_words = get_stop_words()
-	stop_words.remove('america')
+	stop_words.remove('great')
 
 	counters = {}
 
 	for cand in candidates:
 		counter, total_words = word_counts(get_passages_for_candidate(cand), stop_words=stop_words)
 
-		america_count = 1.0*counter['america']/total_words
+		america_count = 1.0*counter['great']/total_words
 
 		counters[cand] = america_count
+	print counters
 
 	return max(counters.iteritems(), key=operator.itemgetter(1))[0]
 

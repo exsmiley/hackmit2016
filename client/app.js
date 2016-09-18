@@ -1,9 +1,20 @@
-var app = angular.module('GreatAppAgain',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+var app = angular.module('GreatAppAgain',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngRoute'])
 
-.config(function($mdThemingProvider) {
+.config(function($mdThemingProvider, $routeProvider, $locationProvider) {
   $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
   $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
   $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+
+  $routeProvider
+
+		// route for the home page
+		.when('/', {
+			templateUrl : 'pages/home.html',
+			controller: 'GreatCtrl'
+		})
+
+		// use the HTML5 History API to get the pretty urls without a weird /#/ between relevant info
+        $locationProvider.html5Mode(true);
 });
 
