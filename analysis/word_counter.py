@@ -2,6 +2,7 @@ import re
 import os
 from collections import Counter
 import operator
+import wikipedia
 
 
 def get_passages_for_candidate(person):
@@ -20,12 +21,12 @@ def get_stop_words():
 		stop_words = f.read().split()
 	return stop_words
 
-def word_counts(passages, stop_words=get_stop_words()):
+def get_word_counts(passages, stop_words=get_stop_words()):
 	word_counts = Counter()
 	total_words = 0
 
 	for passage in passages:
-		words = re.findall(r'\w+', passage)
+		words = re.findall('\w+', passage)
 
 		filtered_words = [word.lower() for word in words if word.lower() not in stop_words]
 
@@ -38,18 +39,41 @@ def word_counts(passages, stop_words=get_stop_words()):
 def get_most_patriotic():
 	candidates = ['hillary', 'trump']
 	stop_words = get_stop_words()
-	stop_words.remove('great')
+	stop_words.remove('america')
 
 	counters = {}
 
 	for cand in candidates:
-		counter, total_words = word_counts(get_passages_for_candidate(cand), stop_words=stop_words)
+		counter, total_words = get_word_counts(get_passages_for_candidate(cand), stop_words=stop_words)
 
-		america_count = 1.0*counter['great']/total_words
+		america_count = 1.0*counter['america']/total_words
 
 		counters[cand] = america_count
 	print counters
 
 	return max(counters.iteritems(), key=operator.itemgetter(1))[0]
 
-print get_most_patriotic()
+def get_wikipedia_data():
+	"""
+	Gets the wikipedia content articles for Trump and Clinton
+	"""
+	trump = wikipedia.page("Donald_Trump").content.encode('utf-8')
+	clinton = wikipedia.page("Hillary_Clinton").content.encode('utf-8')
+	return {"trump": trump, "clinton": clinton}
+
+
+def analyze_wikipedia_articles():
+	"""
+	Checks the most used words in describing Trump and Clinton
+	"""
+	data = get_wikipedia_data()
+	most_common = {}
+
+	for (cand, text) in data.iteritems():
+		words = re.findall('\w+', text.lower())
+		
+		most_common[cand] = Counter(words).most_common(10)
+
+	return most_common
+
+print analyze_wikipedia_articles()

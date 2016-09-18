@@ -6,6 +6,14 @@ app.controller('GreatCtrl', function($scope, $http) {
   	$scope.finished = false
   	$scope.pageIndex = 1
 
+  	$scope.options = {
+        responsive: false
+    }
+    $scope.hovered = function(d){
+        $scope.barValue = d;
+        $scope.$apply();
+    };
+
   	// Get lists of images
   	$http({
 	  method: 'GET',
@@ -82,12 +90,25 @@ app.controller('GreatCtrl', function($scope, $http) {
   		$scope.pageIndex = 3
 
   		// POST the winner to the server
-  		// $http.post('/api/vote', {"candidate": a});
   		$http({
 		    method: 'POST',
 		    url: '/api/vote',
 		    data: "candidate=" + $scope.winner,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		});
+
+		$scope.getResults();
+  	}
+
+  	// gets the results from the poll
+  	$scope.getResults = function() {
+  		$http({
+		  method: 'GET',
+		  url: 'https://make-xkcd-great-again.firebaseio.com/counter.json',
+		}).then(function successCallback(response) {
+		    $scope.voteLabels = ["Trump", "Hillary"]
+		    $scope.voteSeries = ["Votes"]
+		    $scope.voteData = [[response['data']['trump'], response['data']['hillary']], [0,0]]
 		});
   	}
 })

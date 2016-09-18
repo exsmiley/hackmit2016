@@ -73,12 +73,18 @@
     <!-- This image should also be bound to either display Trump or Hillary -->
     <img src="img/trump_doge.gif" alt="Doge Trump" ng-if='winner=="Trump"'>
     <img src="img/pusheen.gif" alt="Pusheen Hillary" ng-if='winner=="Hillary"'>
+    <span class='md-subhead'>Trump upvotes:{{trumpVotes}} Hillary upvotes:{{hillaryVotes}}</span>
     <md-card-actions layout-xs="column" layout="row" layout-align="center center">
     <md-content layout-xs="column" layout="row"  layout-align="center">
+
     <!-- This button should take us to the 'About' page -->
     <md-button class="md-raised md-warn" href="about">Learn more</md-button>
   </md-content>
 </md-card-actions>
+<div style="display:block;height:80%;width:60%;">
+                  <canvas id="bar" class="chart chart-bar" options="options"
+                    chart-data="voteData" chart-labels="voteLabels" chart-series="voteSeries">
+                  </canvas></div>
 </md-card-title-text>
 </span>
 </md-card-title>
