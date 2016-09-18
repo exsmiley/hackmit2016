@@ -37,18 +37,17 @@ app.get('/api/images/:candidate', function(req, res) {
 
 app.post('/api/vote', function(req, res) {
   console.log(req.body);
-  var vote = req.body.vote;
   var candidate = req.body.candidate;
-  if (candidate == "trump") {
-    rootRef.set({
-    "vote" : {
-      "candidate" : "trump"
-    }})}else{
-      rootRef.set({
-        "vote" : {
-        "candidate" : "hillary"
-    }});
+  rootRef.child("counter/candidate").on("value", function(snapshot){
+    x = snapshot.val();
+    if (candidate === "trump") {
+      rootRef.set({"trump": x+1});
     }
+    if (candidate === "hillary") {
+      rootRef.set({"hillary": x+1});
+    }
+  }); 
+});
 
 app.all('/*', function ( req, res ) {
         res.sendFile(__dirname + '/client/index.html');
