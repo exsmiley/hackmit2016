@@ -36,8 +36,14 @@ app.get('/api/images/:candidate', function(req, res) {
 })
 
 app.post('/api/vote', function(req, res) {
-	// use req.body.vote to get the person that is getting voted for
-});
+  console.log(req.body);
+  var vote = req.body.vote;
+  var candidate = req.body.candidate;
+  rootRef.set({
+   "vote" : {
+     "candidate" : {
+      "trump","hillary"
+    }}});
 
 app.all('/*', function ( req, res ) {
         res.sendFile(__dirname + '/client/index.html');
