@@ -4,6 +4,7 @@ app.controller('GreatCtrl', function($scope, $http) {
   	$scope.trumpVotes = 0
   	$scope.hillaryVotes = 0
   	$scope.finished = false
+  	$scope.pageIndex = 1
 
   	// Get lists of images
   	$http({
@@ -61,8 +62,19 @@ app.controller('GreatCtrl', function($scope, $http) {
   		$scope.nextImage()
   	}
 
+  	// leaves the start page and starts the game
+  	$scope.start = function() {
+  		$scope.pageIndex = 2
+  	}
+
   	// transitions to the final screen
   	$scope.finish = function() {
-  		// TODO
+  		if($scope.trumpVotes >= $scope.hillaryVotes) {
+  			$scope.winner = 'Trump'
+  		}
+  		else {
+  			$scope.winner = "Hillary"
+  		}
+  		$scope.pageIndex = 3
   	}
 })
