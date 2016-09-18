@@ -48,6 +48,35 @@
     <div ng-controller="GreatCtrl" ng-cloak="" class="carddemoBasicUsage" ng-app="GreatAppAgain">
       Trump Likes: {{trumpVotes}} Hillary Likes: {{hillaryVotes}}<br>
 
+  <!-- LANDING PAGE WITH INSTRUCTIONS ON HOW TO PLAY -->
+  <md-content layout-xs="column" layout="row"  layout-align="center">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+        <md-card-title>
+          <span layout ="row">
+            <md-card-title-text>
+              <span class="md-headline">Not sure who you're voting for in 2016?</span>
+              <span class="md-subhead"><b>We're here to help.</b> <br>
+                Flip through the following series of xkcd comics; when <br>
+                you encounter an image you find funny or amusing, give it an <br>
+                upvote! Otherwise, pass it by hitting thumbs down. At the end, <br>
+                we'll derive your inclination to one candidate by using a <br>
+                sophisticated machine learning algorithm. You can end the survey <br>
+                at any point in time by clicking the 'Show me my results!' button, <br>
+                but the more images you go through, the more accurate your <br>
+                result will be. Good luck!</span>
+                          <md-card-actions layout-xs="column" layout="row" layout-align="center center">
+              <md-content layout-xs="column" layout="row"  layout-align="center">
+                <md-button flex = "50" class="md-warn md-raised md-hue-2">START!</md-button>
+              </md-content>
+          </md-card-actions>
+            </md-card-title-text>
+          </span>
+        </md-card-title>
+
+      </md-card>
+  </md-content>
+
+
   <md-content layout-xs="column" layout="row"  layout-align="center">
       <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
         <md-card-title>
@@ -72,6 +101,7 @@
         </md-card-content>
       </md-card>
   </md-content>
+
   <md-content layout-xs="column" layout="row"  layout-align="center">
     <md-button flex = "30" class="md-raised md-primary">Show me my results!</md-button>
   </md-content>
