@@ -4,6 +4,25 @@ var http = require('http');
 var app = express();
 var server = http.createServer(app);
 
+var firebase = require('firebase');
+
+// See https://firebase.google.com/docs/web/setup#project_setup for how to
+// auto-generate this config
+var config = {
+  apiKey: "AIzaSyDYhRaGOtnjC4JmmgTXag6iBLBlb8MVhQE",
+  authDomain: "make-xkcd-great-again.firebaseapp.com",
+  databaseURL: "https://make-xkcd-great-again.firebaseio.com"
+};
+
+firebase.initializeApp(config);
+
+// TODO add firebase update functions
+
+var rootRef = firebase.database().ref();
+
+// Firebase stuff
+var counter = rootRef.child('counter');
+
 app.use(express.static('client'));
 
 app.all('/*', function ( req, res ) {
