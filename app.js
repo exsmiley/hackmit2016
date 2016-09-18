@@ -39,11 +39,16 @@ app.post('/api/vote', function(req, res) {
   console.log(req.body);
   var vote = req.body.vote;
   var candidate = req.body.candidate;
-  rootRef.set({
-   "vote" : {
-     "candidate" : {
-      "trump","hillary"
-    }}});
+  if (candidate == "trump") {
+    rootRef.set({
+    "vote" : {
+      "candidate" : "trump"
+    }})}else{
+      rootRef.set({
+        "vote" : {
+        "candidate" : "hillary"
+    }});
+    }
 
 app.all('/*', function ( req, res ) {
         res.sendFile(__dirname + '/client/index.html');
