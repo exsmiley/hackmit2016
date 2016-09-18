@@ -49,62 +49,73 @@
       Trump Likes: {{trumpVotes}} Hillary Likes: {{hillaryVotes}}<br>
 
   <!-- LANDING PAGE WITH INSTRUCTIONS ON HOW TO PLAY -->
-  <md-content layout-xs="column" layout="row"  layout-align="center">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
-        <md-card-title>
-          <span layout ="row">
+  <div ng-if='pageIndex === 1'>
+    <md-content layout-xs="column" layout="row"  layout-align="center">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+          <md-card-title>
+            <span layout ="row">
+              <md-card-title-text>
+                <span class="md-headline">Not sure who you're voting for in 2016?</span>
+                <span class="md-subhead"><b>We're here to help.</b> <br>
+                  Flip through the following series of xkcd comics; when <br>
+                  you encounter an image you find funny or amusing, give it an <br>
+                  upvote! Otherwise, pass it by hitting thumbs down. At the end, <br>
+                  we'll derive your inclination to one candidate by using a <br>
+                  sophisticated machine learning algorithm. You can end the survey <br>
+                  at any point in time by clicking the 'Show me my results!' button, <br>
+                  but the more images you go through, the more accurate your <br>
+                  result will be. Good luck!</span>
+                            <md-card-actions layout-xs="column" layout="row" layout-align="center center">
+                <md-content layout-xs="column" layout="row"  layout-align="center">
+                  <md-button flex = "50" class="md-warn md-raised md-hue-2" ng-click='start()'>START!</md-button>
+                </md-content>
+            </md-card-actions>
+              </md-card-title-text>
+            </span>
+          </md-card-title>
+
+        </md-card>
+    </md-content>
+  </div>
+
+  <div ng-if='pageIndex === 2'>
+    <md-content layout-xs="column" layout="row"  layout-align="center" ng-if='pageIndex === 2'>
+        <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+          <md-card-title>
             <md-card-title-text>
-              <span class="md-headline">Not sure who you're voting for in 2016?</span>
-              <span class="md-subhead"><b>We're here to help.</b> <br>
-                Flip through the following series of xkcd comics; when <br>
-                you encounter an image you find funny or amusing, give it an <br>
-                upvote! Otherwise, pass it by hitting thumbs down. At the end, <br>
-                we'll derive your inclination to one candidate by using a <br>
-                sophisticated machine learning algorithm. You can end the survey <br>
-                at any point in time by clicking the 'Show me my results!' button, <br>
-                but the more images you go through, the more accurate your <br>
-                result will be. Good luck!</span>
-                          <md-card-actions layout-xs="column" layout="row" layout-align="center center">
-              <md-content layout-xs="column" layout="row"  layout-align="center">
-                <md-button flex = "50" class="md-warn md-raised md-hue-2">START!</md-button>
-              </md-content>
-          </md-card-actions>
+              <span class="md-headline">Indicate whether you like the comic below:</span>
+              <span class="md-subhead">(Thumbs up or thumbs down)</span>
             </md-card-title-text>
-          </span>
-        </md-card-title>
+          </md-card-title>
+          <md-card-content layout="row" layout-align="center center">
+            <md-card-actions layout-xs="column" layout="row" layout-align="center center">
+              <md-button layout-align="center" class="md-icon-button" aria-label="Thumbs Down" ng-click="nextImage()">
+               <md-icon md-font-library="material-icons">&#xE8DB;</md-icon>
+              </md-button>
+              <md-button layout-align="center" class="md-icon-button" aria-label="Thumbs Up" ng-click="vote()">
+                <md-icon md-font-library="material-icons">&#xE8DC;</md-icon>
+              </md-button>
+            </md-card-actions>
+          </md-card-content>
+          <md-card-content layout="row" >
+            <img src="img/{{cand}}/{{currentImage}}" alt="voter image" layout-align="left">
+            
+          </md-card-content>
+        </md-card>
+    </md-content>
 
-      </md-card>
-  </md-content>
+    <md-content layout-xs="column" layout="row"  layout-align="center">
+      <md-button flex = "30" class="md-raised md-primary" ng-click='finish()'>Show me my results!</md-button>
+    </md-content>
+  </div>
 
+  <div ng-if='pageIndex === 3'>
 
-  <md-content layout-xs="column" layout="row"  layout-align="center">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Indicate whether you like the comic below:</span>
-            <span class="md-subhead">(Thumbs up or thumbs down)</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="row" layout-align="center center">
-          <md-card-actions layout-xs="column" layout="row" layout-align="center center">
-            <md-button layout-align="center" class="md-icon-button" aria-label="Thumbs Down" ng-click="nextImage()">
-             <md-icon md-font-library="material-icons">&#xE8DB;</md-icon>
-            </md-button>
-            <md-button layout-align="center" class="md-icon-button" aria-label="Thumbs Up" ng-click="vote()">
-              <md-icon md-font-library="material-icons">&#xE8DC;</md-icon>
-            </md-button>
-          </md-card-actions>
-        </md-card-content>
-        <md-card-content layout="row" >
-          <img src="img/{{cand}}/{{currentImage}}" alt="voter image" layout-align="left">
-          
-        </md-card-content>
-      </md-card>
-  </md-content>
+  </div>
 
-  <md-content layout-xs="column" layout="row"  layout-align="center">
-    <md-button flex = "30" class="md-raised md-primary">Show me my results!</md-button>
-  </md-content>
+  <div ng-if='pageIndex === 4'>
+
+  </div>
 </div>
 
 <!--
