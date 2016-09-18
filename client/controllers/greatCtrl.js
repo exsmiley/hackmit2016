@@ -82,10 +82,12 @@ app.controller('GreatCtrl', function($scope, $http) {
   		$scope.pageIndex = 3
 
   		// POST the winner to the server
-  // 		$http({
-		//   method: 'POST',
-		//   url: '/api/vote',
-		//   data: {"vote": $scope.winner.toLowerCase()}
-		// })
+  		// $http.post('/api/vote', {"candidate": a});
+  		$http({
+		    method: 'POST',
+		    url: '/api/vote',
+		    data: "candidate=" + $scope.winner,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		});
   	}
 })

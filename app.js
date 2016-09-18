@@ -5,6 +5,11 @@ var fs = require('fs');
 var app = express();
 var server = http.createServer(app);
 
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 var firebase = require('firebase');
 
 // See https://firebase.google.com/docs/web/setup#project_setup for how to
@@ -17,17 +22,13 @@ var config = {
 
 firebase.initializeApp(config);
 
-// TODO add firebase update functions
-
 var rootRef = firebase.database().ref();
 
-// Firebase stuff
-var counter = rootRef.child('counter');
-
+// serve static files
 app.use(express.static('client'));
 
+// get all files for the current candidate
 app.get('/api/images/:candidate', function(req, res) {
-	// get all files for the current candidate
 	var path = 'client/img/' + req.params.candidate
 
 	fs.readdir(path, function(err, items) {
@@ -35,20 +36,24 @@ app.get('/api/images/:candidate', function(req, res) {
 	});
 })
 
+// updates Firebase with another vote for the candidate that was voted for
 app.post('/api/vote', function(req, res) {
-  console.log(req.body);
-  var candidate = req.body.candidate;
-  rootRef.child("counter/candidate").on("value", function(snapshot){
+  var candidate = req.body.candidate.toLowerCase();
+
+  var counter = rootRef.child('counter');
+  counter.child(candidate).once("value", function(snapshot){
     x = snapshot.val();
+
     if (candidate === "trump") {
-      rootRef.set({"trump": x+1});
+      counter.update({"trump": x+1});
     }
-    if (candidate === "hillary") {
-      rootRef.set({"hillary": x+1});
+    else if (candidate === "hillary") {
+      counter.update({"hillary": x+1});
     }
   }); 
 });
 
+// have all links direct to our main file
 app.all('/*', function ( req, res ) {
         res.sendFile(__dirname + '/client/index.html');
     })
