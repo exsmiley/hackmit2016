@@ -1,4 +1,4 @@
-# hackmit2016
+# xkcd for America
 Make xkcd Great Again
 
 Determine which candidate to vote for by throwing away your pre-conceived notions – using the art of xkcd
